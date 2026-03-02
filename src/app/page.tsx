@@ -24,9 +24,27 @@ const AIArtistSection = () => {
       <section>
         <h2 className="text-2xl font-bold mb-4">Select Theme</h2>
         <div className="flex justify-center">
-          <button onClick={() => setTheme('cyberpunk')} className="px-4 py-2 bg-primary text-primary-foreground rounded">Cyberpunk</button>
-          <button onClick={() => setTheme('minimalist')} className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2">Minimalist</button>
-          <button onClick={() => setTheme('dreamy')} className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2">Dreamy</button>
+          <button
+            onClick={() => setTheme('cyberpunk')}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90 transition-opacity"
+            aria-label="사이버펑크 테마 선택"
+          >
+            Cyberpunk
+          </button>
+          <button
+            onClick={() => setTheme('minimalist')}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2 hover:opacity-90 transition-opacity"
+            aria-label="미니멀 테마 선택"
+          >
+            Minimalist
+          </button>
+          <button
+            onClick={() => setTheme('dreamy')}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2 hover:opacity-90 transition-opacity"
+            aria-label="드리미 테마 선택"
+          >
+            Dreamy
+          </button>
         </div>
       </section>
 
@@ -34,15 +52,27 @@ const AIArtistSection = () => {
       <section>
         <h2 className="text-2xl font-bold mb-4">Music Player</h2>
         <div className="max-w-md mx-auto">
-          <button onClick={play} className="px-4 py-2 bg-green-500 text-white rounded">Play</button>
-          <button onClick={pause} className="px-4 py-2 bg-red-500 text-white rounded ml-2">Pause</button>
+          <button
+            onClick={play}
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+            aria-label="음악 재생"
+          >
+            Play
+          </button>
+          <button
+            onClick={pause}
+            className="px-4 py-2 bg-red-500 text-white rounded ml-2 hover:bg-red-600 transition-colors"
+            aria-label="음악 일시정지"
+          >
+            Pause
+          </button>
         </div>
       </section>
 
       {/* Image Upload */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-        <div className="border-2 border-dashed border-muted rounded-lg p-8 text-center">
+        <h2 className="text-2xl font-bold mb-4">AI Art Gallery</h2>
+        <div className="border-2 border-dashed border-muted rounded-lg p-8 text-center hover:border-primary transition-colors">
           <p className="text-muted-foreground">Image upload component will be here</p>
         </div>
       </section>
@@ -61,7 +91,7 @@ const AXExpertSection = () => {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Projects</h2>
+        <h2 className="text-2xl font-bold mb-4">Explore AX Projects</h2>
         <p className="text-muted-foreground">
           Project showcase will be displayed here.
         </p>

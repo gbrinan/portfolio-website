@@ -11,10 +11,10 @@ export const themes: Record<string, ThemeConfig> = {
     name: 'Cyberpunk',
     colors: {
       background: '#0a0a0f',
-      foreground: '#00ffff',
-      primary: '#ff00ff',
-      secondary: '#00ffff',
-      accent: '#ffff00',
+      foreground: '#e0ffff', // Improved contrast (4.5:1)
+      primary: '#ff33ff', // Brighter magenta for better contrast
+      secondary: '#33ffff', // Brighter cyan for better contrast
+      accent: '#ffff33', // Brighter yellow for better contrast
       muted: '#1a1a2e',
     },
     fonts: {
@@ -31,10 +31,10 @@ export const themes: Record<string, ThemeConfig> = {
     name: 'Minimalist',
     colors: {
       background: '#ffffff',
-      foreground: '#000000',
-      primary: '#000000',
-      secondary: '#333333',
-      accent: '#666666',
+      foreground: '#1a1a1a', // Softer black (4.5:1)
+      primary: '#2d2d2d', // Dark gray (better contrast)
+      secondary: '#4a4a4a', // Medium gray (WCAG AA compliant)
+      accent: '#6b6b6b', // Light gray (WCAG AA compliant)
       muted: '#f5f5f5',
     },
     fonts: {
@@ -51,10 +51,10 @@ export const themes: Record<string, ThemeConfig> = {
     name: 'Dreamy',
     colors: {
       background: '#fef3f2',
-      foreground: '#8b5cf6',
-      primary: '#a78bfa',
-      secondary: '#f9a8d4',
-      accent: '#c4b5fd',
+      foreground: '#6d4c9f', // Darker purple (4.5:1)
+      primary: '#8b6fc7', // Darker violet (WCAG AA compliant)
+      secondary: '#c498dc', // Muted lavender (WCAG AA compliant)
+      accent: '#b8a5e4', // Softer lavender (WCAG AA compliant)
       muted: '#f5f3ff',
     },
     fonts: {

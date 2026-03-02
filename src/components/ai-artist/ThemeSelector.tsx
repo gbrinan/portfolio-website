@@ -21,7 +21,7 @@ export function ThemeSelector({ currentTheme, onThemeChange, className }: ThemeS
   return (
     <div
       role="radiogroup"
-      aria-label="Theme selection"
+      aria-label="테마 선택"
       className={cn('flex flex-wrap gap-4 p-4', className)}
     >
       {Object.values(themes).map((theme) => (
@@ -29,17 +29,18 @@ export function ThemeSelector({ currentTheme, onThemeChange, className }: ThemeS
           key={theme.id}
           role="radio"
           aria-checked={currentTheme === theme.id}
+          aria-label={`${theme.name} 테마 선택`}
           onClick={() => onThemeChange(theme.id as ThemeId)}
           className={cn(
-            'relative group px-6 py-4 rounded-lg border-2 transition-all duration-300',
+            'theme-card relative group px-6 py-4 rounded-lg border-2 transition-all duration-300',
             'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
             currentTheme === theme.id
-              ? 'border-primary shadow-lg scale-105'
+              ? 'selected border-primary shadow-lg scale-105'
               : 'border-muted hover:border-muted-foreground/50'
           )}
           style={{
             backgroundColor: theme.colors.muted,
-            borderColor: currentTheme === theme.id ? theme.colors.primary : undefined,
+            borderColor: currentTheme === theme.id ? theme.colors.accent : undefined,
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -90,10 +91,28 @@ export function ThemeSelector({ currentTheme, onThemeChange, className }: ThemeS
             />
           </div>
 
+          {/* Check Icon for Selected State */}
+          <div className="check-icon absolute top-2 right-2 w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+            <svg
+              className="w-3 h-3 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+
           {/* Active Indicator */}
           {currentTheme === theme.id && (
             <motion.div
-              className="absolute inset-0 rounded-lg ring-2 ring-primary ring-offset-2"
+              className="absolute inset-0 rounded-lg ring-2 ring-accent ring-offset-2"
               layoutId="activeTheme"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />

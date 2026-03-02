@@ -1,0 +1,203 @@
+# Design Review Configuration
+# MoAI Design Evaluation and Feedback System Settings
+
+design_review:
+  enabled: true
+  version: "1.0.0"
+
+  # Agent Configuration
+  agent:
+    name: expert-design-review
+    model: sonnet
+    permission_mode: default
+
+  # Review Framework
+  framework:
+    visual_design:
+      enabled: true
+      criteria:
+        - visual_hierarchy
+        - color_theory
+        - typography
+        - layout_spacing
+        - brand_consistency
+
+    user_experience:
+      enabled: true
+      criteria:
+        - user_flow
+        - navigation
+        - call_to_action
+        - mobile_responsiveness
+        - interaction_design
+
+    accessibility:
+      enabled: true
+      standards:
+        - wcag_2_1_aa
+        - wcag_2_1_aaa
+      criteria:
+        - color_contrast
+        - screen_reader_compatibility
+        - keyboard_navigation
+        - focus_indicators
+        - touch_target_sizing
+
+  # Feedback Prioritization
+  priorities:
+    high:
+      impact: critical
+      criteria:
+        - accessibility_violations
+        - user_flow_blockers
+        - wcag_compliance_failures
+        - mobile_usability_issues
+
+    medium:
+      impact: moderate
+      criteria:
+        - visual_hierarchy_clarity
+        - consistency_improvements
+        - ux_enhancements
+        - responsive_design_refinements
+
+    low:
+      impact: nice_to_have
+      criteria:
+        - polish_and_refinement
+        - aesthetic_improvements
+        - optimization_opportunities
+
+  # Design Standards Reference
+  standards:
+    material_design:
+      enabled: true
+      version: "3.0"
+      url: "https://m3.material.io/"
+
+    apple_hig:
+      enabled: true
+      url: "https://developer.apple.com/design/human-interface-guidelines/"
+
+    fluent_design:
+      enabled: true
+      url: "https://fluent2.microsoft.design/"
+
+    wcag:
+      enabled: true
+      version: "2.1"
+      url: "https://www.w3.org/WAI/WCAG21/quickref/"
+
+  # GitHub Integration
+  github:
+    user: gbrinan
+    repository: portfolio-website
+
+    issue_template:
+      path: ".github/ISSUE_TEMPLATE/design-review.md"
+      labels:
+        - design-review
+        - needs-evaluation
+
+    pull_request_template:
+      path: ".github/PULL_REQUEST_TEMPLATE/design-update.md"
+      labels:
+        - design-update
+
+  # Accessibility Requirements
+  accessibility:
+    wcag_level: AA
+    color_contrast:
+      normal_text: 4.5
+      large_text: 3.0
+      ui_components: 3.0
+
+    touch_targets:
+      minimum_size: "48x48px"
+      recommended_size: "44x44px"
+
+    text_scaling:
+      maximum_zoom: 200
+
+  # Responsive Design Breakpoints
+  breakpoints:
+    mobile:
+      min: "320px"
+      max: "767px"
+      description: "Mobile devices"
+
+    tablet:
+      min: "768px"
+      max: "1023px"
+      description: "Tablet devices"
+
+    desktop:
+      min: "1024px"
+      description: "Desktop and larger"
+
+  # Image Analysis Configuration
+  image_analysis:
+    enabled: true
+    supported_formats:
+      - png
+      - jpg
+      - jpeg
+      - webp
+
+    max_file_size: "10MB"
+
+  # Language Support
+  languages:
+    primary: ko
+    secondary: en
+
+    ko:
+      name: Korean
+      native_name: 한국어
+      code: ko
+
+    en:
+      name: English
+      native_name: English
+      code: en
+
+  # Quality Metrics
+  quality_metrics:
+    feedback_specificity:
+      required: true
+      threshold: high
+
+    actionability:
+      required: true
+      threshold: high
+
+    evidence_based:
+      required: true
+      threshold: medium
+
+    prioritization:
+      required: true
+      threshold: high
+
+  # Output Format
+  output:
+    format: markdown
+    include_sections:
+      - overall_assessment
+      - priority_recommendations
+      - design_strengths
+      - accessibility_notes
+      - mobile_considerations
+      - industry_standards_reference
+
+    priority_levels:
+      - high
+      - medium
+      - low
+
+# Performance Settings
+performance:
+  max_review_duration: 300
+  parallel_analysis: true
+  cache_results: true
+  cache_ttl: 3600

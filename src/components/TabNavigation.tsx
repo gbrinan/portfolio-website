@@ -25,7 +25,7 @@ export function TabNavigation({ activeTab, onTabChange, className }: TabNavigati
   return (
     <nav
       role="tablist"
-      aria-label="Portfolio sections"
+      aria-label="전문 분야 선택"
       className={cn(
         'flex items-center justify-center gap-2 p-2 bg-muted/50 rounded-lg backdrop-blur-sm',
         className
