@@ -8,8 +8,27 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Particle, Ring, FrequencyData, CursorEffectType } from '@/types'
+import { FrequencyData, CursorEffectType, Particle as ParticleType, Ring as RingType } from '@/types'
 import { cn } from '@/lib/utils'
+
+// Local types matching useCursorEffects interface
+interface Particle {
+  id: string
+  x: number
+  y: number
+  opacity: number
+  speed: number
+  color: string
+}
+
+interface Ring {
+  id: string
+  x: number
+  y: number
+  size: number
+  opacity: number
+  color: string
+}
 
 interface CursorEffectsProps {
   isActive: boolean

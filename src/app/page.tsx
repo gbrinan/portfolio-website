@@ -8,73 +8,49 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { TabNavigation } from '@/components/TabNavigation'
+import { ThemeSelector } from '@/components/ai-artist/ThemeSelector'
+import { ImageUpload } from '@/components/ai-artist/ImageUpload'
+import { MusicPlayer } from '@/components/ai-artist/MusicPlayer'
+import { CursorEffects } from '@/components/ai-artist/CursorEffects'
 import { useTabNavigation } from '@/hooks/useTabNavigation'
 import { useTheme } from '@/hooks/useTheme'
 import { useAudio } from '@/hooks/useAudio'
-import { TabId } from '@/types'
+import { useCursorEffects } from '@/hooks/useCursorEffects'
+import { TabId, UploadedImage } from '@/types'
 
 // Lazy load section components for performance
 const AIArtistSection = () => {
   const { theme, setTheme } = useTheme()
   const { audioState, frequencyData, play, pause, setVolume, loadUrl } = useAudio()
+  const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([])
 
   return (
     <div className="space-y-8">
       {/* Theme Selector */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Select Theme</h2>
-        <div className="flex justify-center">
-          <button
-            onClick={() => setTheme('cyberpunk')}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90 transition-opacity"
-            aria-label="사이버펑크 테마 선택"
-          >
-            Cyberpunk
-          </button>
-          <button
-            onClick={() => setTheme('minimalist')}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2 hover:opacity-90 transition-opacity"
-            aria-label="미니멀 테마 선택"
-          >
-            Minimalist
-          </button>
-          <button
-            onClick={() => setTheme('dreamy')}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded ml-2 hover:opacity-90 transition-opacity"
-            aria-label="드리미 테마 선택"
-          >
-            Dreamy
-          </button>
-        </div>
+        <h2 className="text-2xl font-bold mb-4">테마 선택</h2>
+        <ThemeSelector currentTheme={theme} onThemeChange={setTheme} />
       </section>
 
       {/* Music Player */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Music Player</h2>
-        <div className="max-w-md mx-auto">
-          <button
-            onClick={play}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-            aria-label="음악 재생"
-          >
-            Play
-          </button>
-          <button
-            onClick={pause}
-            className="px-4 py-2 bg-red-500 text-white rounded ml-2 hover:bg-red-600 transition-colors"
-            aria-label="음악 일시정지"
-          >
-            Pause
-          </button>
-        </div>
+        <h2 className="text-2xl font-bold mb-4">음악 플레이어</h2>
+        <MusicPlayer
+          audioState={audioState}
+          onPlay={play}
+          onPause={pause}
+          onVolumeChange={setVolume}
+          onUrlChange={loadUrl}
+        />
       </section>
 
       {/* Image Upload */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">AI Art Gallery</h2>
-        <div className="border-2 border-dashed border-muted rounded-lg p-8 text-center hover:border-primary transition-colors">
-          <p className="text-muted-foreground">Image upload component will be here</p>
-        </div>
+        <h2 className="text-2xl font-bold mb-4">AI 아트 갤러리</h2>
+        <ImageUpload
+          onUpload={setUploadedImages}
+          existingImages={uploadedImages}
+        />
       </section>
     </div>
   )
@@ -108,10 +84,21 @@ const AXExpertSection = () => {
 }
 
 export default function HomePage() {
-  const { activeTab, isTransitioning } = useTabNavigation()
+  const { activeTab, setActiveTab, isTransitioning } = useTabNavigation()
+  const { audioState, frequencyData } = useAudio()
+
+  // Cursor effects setup
+  const cursorEffects = useCursorEffects({
+    isPlaying: audioState.playbackState === 'playing',
+    frequencyData,
+    effectType: 'particles'
+  })
 
   return (
-    <main className="min-h-screen py-8 px-4">
+    <main
+      className="min-h-screen py-8 px-4"
+      onMouseMove={(e) => cursorEffects.handleMouseMove({ x: e.clientX, y: e.clientY, timestamp: Date.now() })}
+    >
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <header className="text-center space-y-4">
@@ -124,7 +111,7 @@ export default function HomePage() {
         </header>
 
         {/* Tab Navigation */}
-        <TabNavigation activeTab={activeTab} onTabChange={() => {}} />
+        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
 
         {/* Content Area */}
         <AnimatePresence mode="wait">
@@ -145,6 +132,17 @@ export default function HomePage() {
           <p>© 2026 Portfolio. Built with Next.js 16 and TypeScript.</p>
         </footer>
       </div>
+
+      {/* Cursor Effects */}
+      <CursorEffects
+        isActive={audioState.playbackState === 'playing'}
+        frequencyData={frequencyData}
+        effectType="particles"
+        particles={cursorEffects.particles}
+        rings={cursorEffects.rings}
+        cursorScale={cursorEffects.cursorScale}
+        cursorHue={cursorEffects.cursorHue}
+      />
     </main>
   )
 }

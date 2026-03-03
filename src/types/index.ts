@@ -80,19 +80,20 @@ export interface Particle {
   id: string
   x: number
   y: number
-  vx: number
-  vy: number
-  life: number
+  vx?: number
+  vy?: number
+  life?: number
   color: string
-  size: number
+  size?: number
   opacity: number
+  speed?: number
 }
 
 export interface Ring {
   id: string
   x: number
   y: number
-  radius: number
+  radius?: number
   opacity: number
   color: string
   size: number
