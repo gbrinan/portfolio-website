@@ -27,7 +27,7 @@ export function TabNavigation({ activeTab, onTabChange, className }: TabNavigati
       role="tablist"
       aria-label="전문 분야 선택"
       className={cn(
-        'flex items-center justify-center gap-2 p-2 bg-muted/50 rounded-lg backdrop-blur-sm',
+        'flex items-center justify-center gap-2 p-2 bg-muted/50 rounded-lg backdrop-blur-sm shadow-md',
         className
       )}
     >
@@ -41,10 +41,10 @@ export function TabNavigation({ activeTab, onTabChange, className }: TabNavigati
           onClick={() => onTabChange(tab.id)}
           className={cn(
             'relative px-6 py-3 rounded-md font-medium transition-all duration-300',
-            'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
+            'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
             activeTab === tab.id
               ? 'text-foreground bg-primary shadow-lg'
-              : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted hover:shadow-md'
           )}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

@@ -58,7 +58,14 @@ html {
 
 body {
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Enhanced theme transitions for all theme-dependent properties */
+* {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
 }
 
 /* Reduced motion support */
@@ -72,10 +79,22 @@ body {
   }
 }
 
-/* Focus styles for accessibility */
+/* Focus styles for accessibility - Enhanced */
 *:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Ensure focus ring is visible on all backgrounds */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary);
   outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--background), 0 0 0 6px var(--primary);
 }
 
 /* Custom scrollbar */
@@ -137,6 +156,26 @@ body {
       transform: translateY(0);
     }
   }
+
+  /* Box shadow utilities for visual hierarchy */
+  .shadow-subtle {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-floating {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Smooth transition utility */
+  .transition-smooth {
+    transition-property: background-color, color, border-color, box-shadow, transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
 }
 
 /* Glitch effect for cyberpunk theme */
@@ -177,20 +216,37 @@ body {
   }
 }
 
-/* Theme card enhancements */
+/* Theme card enhancements - Box shadows for visual hierarchy */
 .theme-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .theme-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(201, 169, 98, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .theme-card.selected {
   border-color: var(--accent);
   border-width: 3px;
-  box-shadow: 0 8px 16px rgba(201, 169, 98, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card container shadows */
+.card-container {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 300ms ease;
+}
+
+.card-container:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section container shadows */
+.section-container {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 300ms ease;
 }
 
 .theme-card .check-icon {

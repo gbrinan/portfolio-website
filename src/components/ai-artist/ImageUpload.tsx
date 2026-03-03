@@ -136,10 +136,10 @@ export function ImageUpload({
         onDrop={handleDrop}
         className={cn(
           'relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300',
-          'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
+          'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
           isDragging
-            ? 'border-primary bg-primary/5 scale-105'
-            : 'border-muted hover:border-muted-foreground/50'
+            ? 'border-primary bg-primary/5 scale-105 shadow-lg'
+            : 'border-muted hover:border-muted-foreground/50 hover:shadow-md shadow-sm'
         )}
       >
         <input
@@ -171,7 +171,12 @@ export function ImageUpload({
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="mt-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+              className={cn(
+                'mt-2 px-4 py-2 bg-primary text-primary-foreground rounded-md',
+                'hover:bg-primary/90 transition-all duration-300',
+                'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
+                'hover:shadow-md'
+              )}
             >
               Browse Files
             </button>
@@ -242,7 +247,12 @@ export function ImageUpload({
               <button
                 type="button"
                 onClick={() => handleRemoveImage(image.id)}
-                className="absolute top-2 right-2 p-1 bg-destructive text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                className={cn(
+                  'absolute top-2 right-2 p-1 bg-destructive text-destructive-foreground rounded-full',
+                  'opacity-0 group-hover:opacity-100 transition-all duration-300',
+                  'focus:outline-none focus:ring-2 focus:ring-destructive focus:ring-offset-1',
+                  'hover:scale-110 focus:opacity-100 hover:shadow-md'
+                )}
                 aria-label={`Remove ${image.name}`}
               >
                 ✕

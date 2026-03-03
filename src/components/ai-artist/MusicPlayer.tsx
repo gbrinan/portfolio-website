@@ -62,7 +62,7 @@ export function MusicPlayer({
   }
 
   return (
-    <div className={cn('space-y-4 p-4 bg-muted/30 rounded-lg backdrop-blur-sm', className)}>
+    <div className={cn('space-y-4 p-4 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md', className)}>
       {/* URL Input */}
       <form onSubmit={handleUrlSubmit} className="space-y-2">
         <label htmlFor="suno-url" className="block text-sm font-medium">
@@ -79,8 +79,9 @@ export function MusicPlayer({
             }}
             placeholder="https://suno.ai/song/abc123/"
             className={cn(
-              'flex-1 px-3 py-2 rounded-md border bg-background',
-              'focus:outline-none focus:ring-2 focus:ring-primary',
+              'flex-1 px-3 py-2 rounded-md border bg-background shadow-sm',
+              'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
+              'transition-all duration-300',
               urlError && 'border-destructive'
             )}
             aria-invalid={!!urlError}
@@ -88,7 +89,12 @@ export function MusicPlayer({
           />
           <button
             type="submit"
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            className={cn(
+              'px-4 py-2 bg-primary text-primary-foreground rounded-md',
+              'hover:bg-primary/90 transition-all duration-300',
+              'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
+              'hover:shadow-md'
+            )}
           >
             Load
           </button>
@@ -144,9 +150,10 @@ export function MusicPlayer({
               disabled={audioState.playbackState === 'loading'}
               className={cn(
                 'w-12 h-12 rounded-full flex items-center justify-center text-xl',
-                'bg-primary text-primary-foreground hover:bg-primary/90 transition-colors',
-                'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
-                'disabled:opacity-50 disabled:cursor-not-allowed'
+                'bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300',
+                'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
+                'disabled:opacity-50 disabled:cursor-not-allowed',
+                'shadow-md hover:shadow-lg'
               )}
               aria-label={audioState.playbackState === 'playing' ? 'Pause' : 'Play'}
             >

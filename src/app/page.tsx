@@ -27,13 +27,13 @@ const AIArtistSection = () => {
   return (
     <div className="space-y-8">
       {/* Theme Selector */}
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">테마 선택</h2>
         <ThemeSelector currentTheme={theme} onThemeChange={setTheme} />
       </section>
 
       {/* Music Player */}
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">음악 플레이어</h2>
         <MusicPlayer
           audioState={audioState}
@@ -45,7 +45,7 @@ const AIArtistSection = () => {
       </section>
 
       {/* Image Upload */}
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">AI 아트 갤러리</h2>
         <ImageUpload
           onUpload={setUploadedImages}
@@ -59,21 +59,21 @@ const AIArtistSection = () => {
 const AXExpertSection = () => {
   return (
     <div className="space-y-8">
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">About</h2>
         <p className="text-muted-foreground">
           Professional AX Expert portfolio content will be displayed here.
         </p>
       </section>
 
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">Explore AX Projects</h2>
         <p className="text-muted-foreground">
           Project showcase will be displayed here.
         </p>
       </section>
 
-      <section>
+      <section className="p-6 bg-muted/30 rounded-lg backdrop-blur-sm shadow-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4">Contact</h2>
         <p className="text-muted-foreground">
           Contact information will be displayed here.
@@ -96,7 +96,7 @@ export default function HomePage() {
 
   return (
     <main
-      className="min-h-screen py-8 px-4"
+      className="min-h-screen py-8 px-4 transition-colors duration-300"
       onMouseMove={(e) => cursorEffects.handleMouseMove({ x: e.clientX, y: e.clientY, timestamp: Date.now() })}
     >
       <div className="max-w-6xl mx-auto space-y-8">

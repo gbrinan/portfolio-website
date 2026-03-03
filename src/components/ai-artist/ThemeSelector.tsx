@@ -33,10 +33,10 @@ export function ThemeSelector({ currentTheme, onThemeChange, className }: ThemeS
           onClick={() => onThemeChange(theme.id as ThemeId)}
           className={cn(
             'theme-card relative group px-6 py-4 rounded-lg border-2 transition-all duration-300',
-            'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
+            'focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2',
             currentTheme === theme.id
-              ? 'selected border-primary shadow-lg scale-105'
-              : 'border-muted hover:border-muted-foreground/50'
+              ? 'selected border-primary shadow-xl scale-105'
+              : 'border-muted hover:border-muted-foreground/50 hover:shadow-lg'
           )}
           style={{
             backgroundColor: theme.colors.muted,
@@ -44,7 +44,7 @@ export function ThemeSelector({ currentTheme, onThemeChange, className }: ThemeS
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Theme Preview */}
           <div
